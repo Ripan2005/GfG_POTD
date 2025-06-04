@@ -1,5 +1,5 @@
 //C++ CODE
-class Solution {
+ class Solution {
   public:
     int dp[101][101][101];
     int solve(string& s1, string& s2, string& s3,int i,int j,int k){
@@ -23,7 +23,7 @@ class Solution {
         }
     }
     int lcsOf3(string& s1, string& s2, string& s3) {
-        //  Code here
+        // Code here
         memset(dp,-1,sizeof(dp));
         return solve(s1,s2,s3,0,0,0);
     }
