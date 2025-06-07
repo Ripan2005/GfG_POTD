@@ -2,7 +2,7 @@ class Solution {
   public:
     int longestCommonSum(vector<int> &a1, vector<int> &a2) {
         // Code here.
-      vector<int>temp(a1.size());
+        vector<int>temp(a1.size());
         
         for(int i=0;i<a1.size();i++){
             temp[i]=a1[i]-a2[i];
