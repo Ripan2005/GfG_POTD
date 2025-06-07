@@ -2,27 +2,26 @@ class Solution {
   public:
     int longestCommonSum(vector<int> &a1, vector<int> &a2) {
         // Code here.
-        int n      = a1.size();
-        int result = 0;                // stores the maximum length found so far
-
-        // Check all possible subarrays by choosing start index i
-        for (int i = 0; i < n; i++) {
-            int sum1 = 0;              // cumulative sum of a1 from i to j
-            int sum2 = 0;              // cumulative sum of a2 from i to j
-
-            // Extend the subarray to end index j
-            for (int j = i; j < n; j++) {
-                // Accumulate sums for current subarray [i..j]
-                sum1 += a1[j];
-                sum2 += a2[j];
-
-                // If the two sums match, update result with current span length
-                if (sum1 == sum2) {
-                    result = max(result, j - i + 1);
-                }
+      vector<int>temp(a1.size());
+        
+        for(int i=0;i<a1.size();i++){
+            temp[i]=a1[i]-a2[i];
+        }
+        int ans =0 ;
+        int rem =0 ;
+        map<int,int>mp;
+        for(int i=0;i<temp.size();i++){
+            rem+=temp[i];
+            if(rem == 0){
+                ans = max(i+1,ans);
+            }
+            if(mp.find(rem)!=mp.end()){
+                ans = max(ans,i-mp[rem]);
+            }
+            if(mp.find(rem)==mp.end()){
+                mp[rem] = i;
             }
         }
-
-        return result;
+        return ans;
     }
 };
