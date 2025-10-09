@@ -1,0 +1,17 @@
+class Solution {
+  public:
+    void fun(Node* root, vector<int> &ans){
+      // code here
+        if(!root)
+          return;
+        fun(root->left, ans);  
+        fun(root->right, ans);
+        ans.push_back(root->data);
+        return;
+    }
+    vector<int> postOrder(Node* root) {
+        vector<int> ans;
+        fun(root, ans);
+        return ans;
+    }
+};
